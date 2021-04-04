@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "colls-community": {
+      "hosting": {
+        "colls-community": [
+          "colls-community"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "colls-community"
+  }
+}

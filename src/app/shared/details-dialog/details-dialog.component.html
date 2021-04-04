@@ -1,0 +1,27 @@
+<div class="dialog-wrap">
+    <img class="col-md-6 no-padding" [src]="art.arteImg">
+    <div class="form-wrap col-md-6">
+        <div>
+            <h1>{{art.titulo}}</h1>
+            <mat-divider></mat-divider>
+            <p>{{art.descricao}}</p>
+        </div>
+        <div>
+            <mat-chip-list>
+                <mat-chip>{{art.contVotos}} votos</mat-chip>
+            </mat-chip-list>
+        </div>
+        <div class="btn-wrap">
+            <button mat-stroked-button mat-dialog-close class="custom-button">
+                <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Fechar">
+                    close</mat-icon>
+                Fechar
+            </button>
+            <button mat-raised-button color="primary" mat-dialog-close (click)="vote()" class="custom-button">
+                <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Votar">
+                    done</mat-icon>
+                Votar
+            </button>
+        </div>
+    </div>
+</div>

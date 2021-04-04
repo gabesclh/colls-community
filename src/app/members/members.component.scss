@@ -1,0 +1,11 @@
+.content-wrap {
+    padding: 2rem;
+    z-index: 2;
+    overflow: hidden;
+    background-color: white;
+}
+@media (max-width: 1000px) {
+    .content-wrap {
+        padding: 1rem;
+    }
+}

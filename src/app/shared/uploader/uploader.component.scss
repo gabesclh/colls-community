@@ -1,0 +1,14 @@
+mat-progress-bar {
+    transition: width 0.1s ease;
+}
+
+.uploader-wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+.art-image {
+    width: 100%;
+}

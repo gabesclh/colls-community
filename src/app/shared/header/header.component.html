@@ -1,0 +1,42 @@
+<div class="header-wrap">
+    <img src="../../../assets/colls-logo.svg" routerLink="/">
+    <div class="links">
+        <a href="https://store.colls.co/">Home</a>
+        <a href="https://store.colls.co/loja/">Loja</a>
+        <a href="https://store.colls.co/colecoes/">Coleções</a>
+        <a routerLink="/">Vote!</a>
+    </div>
+    <div>
+        <button mat-icon-button routerLink="/" matTooltip="Votar" class="vote">
+            <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Votar">
+                done
+            </mat-icon>
+        </button>
+        <button mat-icon-button routerLink="/member/dashboard" matTooltip="Dashboard"
+            *ngIf="(isDesigner && isLoggedIn) || isAdmin">
+            <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Dashboard">
+                home
+            </mat-icon>
+        </button>
+        <button mat-icon-button routerLink="/member/submit" matTooltip="Novo design" *ngIf="isDesigner && isLoggedIn">
+            <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Novo design">
+                cloud_upload
+            </mat-icon>
+        </button>
+        <button mat-icon-button routerLink="/member/profile" matTooltip="Perfil" *ngIf="isLoggedIn">
+            <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Perfil">
+                account_circle
+            </mat-icon>
+        </button>
+        <button mat-icon-button (click)="logout()" matTooltip="Logout" *ngIf="isLoggedIn">
+            <mat-icon aria-hidden="false" aria-label="Logout">
+                logout
+            </mat-icon>
+        </button>
+        <button mat-icon-button routerLink="/login" matTooltip="Login" *ngIf="!isLoggedIn">
+            <mat-icon aria-hidden="false" aria-label="Logout">
+                login
+            </mat-icon>
+        </button>
+    </div>
+</div>

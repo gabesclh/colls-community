@@ -1,0 +1,112 @@
+@import "../../../shadows.scss";
+
+.signup-wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+a {
+    color: #222;
+    text-decoration: underline;
+}
+
+a:hover,
+a:focus,
+a:visited {
+    color: #222;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.signup-card {
+    background-color: #fff;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+    height: auto;
+    padding: 0;
+
+    @include smth_shadow(4);
+    border-radius: 5px;
+    border: 1px solid #eee;
+    overflow: hidden;
+
+    > div {
+        padding: 0;
+    }
+
+    .signup-form {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 2rem;
+
+        mat-divider {
+            margin: 1rem 0;
+            width: 100%;
+        }
+
+        .buttons-wrap {
+            width: 100%;
+            padding: 0;
+            margin: 0.5rem -0.5rem;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: flex-start;
+
+            button {
+                flex: 1 0 200px;
+            }
+
+            button,
+            a {
+                margin: 0.5rem;
+            }
+        }
+
+        .reset-senha {
+            padding: 0;
+            width: 100%;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: stretch;
+            justify-content: space-between;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: stretch;
+            justify-content: flex-start;
+        }
+
+        .big-btn {
+            padding: 0.8rem;
+            img,
+            mat-icon {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    .signup-img {
+        background-image: url("../../../assets/signup-bg.jpg");
+        background-position: center top;
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 4rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .signup-wrap {
+        padding: 1rem;
+    }
+}

@@ -1,0 +1,66 @@
+<app-header></app-header>
+<div class="vote-wrap">
+    <div matRipple class="top-wrap">
+        <div class="top-text">
+            <h1>Bem-vindo à COLLS Community!</h1>
+            <p>Este é o espaço ideal para você apoiar artistas independentes escolhendo suas estampas favoritas e
+                votando!
+                As 8 estampas mais votadas farão parte da próxima coleção da COLLS.</p>
+            <div class="button-wrap">
+                <a href="#content">
+                    <button mat-raised-button color="primary" class="custom-button">
+                        <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                            done</mat-icon>
+                        Vote na coleção atual!
+                    </button>
+                </a>
+                <a href="https://store.colls.co/">
+                    <button mat-stroked-button class="custom-button">
+                        <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                            shopping_bag</mat-icon>
+                        Visite nossa loja
+                    </button>
+                </a>
+            </div>
+            <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">arrow_downward
+            </mat-icon>
+        </div>
+    </div>
+
+    <div class="content-wrap" id="content">
+        <div class="desc-inner">
+            <h2>Vote à vontade!</h2>
+            <p>A COLLS.CO é uma marca colaborativa de roupas com foco no apoio aos artistas independentes e em produzir
+                produtos de qualidade. A cada coleção, artistas brasileiros enviam suas estampas seguindo um briefing, e
+                a
+                comunidade vota e escolhe as 8 melhores estampas. No fim, fabricamos camisetas de alta qualidade e cada
+                artista leva uma porcentagem das vendas!</p>
+        </div>
+        <div class="cards-wrap">
+            <div class="cstm-card" *ngFor="let art of arts">
+                <div class="img-wrap" style="background-image: url({{art.arteImg}});"></div>
+                <div class="desc-wrap">
+                    <h2>{{art.titulo}}</h2>
+                    <p>{{art.descricao}}</p>
+                    <mat-chip-list>
+                        <mat-chip>{{art.contVotos}} votos</mat-chip>
+                    </mat-chip-list>
+                    <mat-divider></mat-divider>
+                    <div class="btn-wrap">
+
+                        <button mat-raised-button color="primary" (click)="vote(art._id)" class="custom-button">
+                            <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                                done</mat-icon>
+                            Votar!
+                        </button>
+                        <button mat-stroked-button class="custom-button" (click)="openDialog(art)">
+                            <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                                visibility</mat-icon>
+                            Detalhes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

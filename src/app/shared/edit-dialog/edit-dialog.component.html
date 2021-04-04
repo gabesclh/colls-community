@@ -1,0 +1,49 @@
+<div class="dialog-wrap">
+    <img class="col-md-6 no-padding" [src]="art.arteImg">
+    <form [formGroup]="artForm" class="form-wrap col-md-6">
+        <div class="form-row">
+            <mat-form-field appearance="outline" class="col-md-12">
+                <mat-label>Título</mat-label>
+                <input matInput type="text" formControlName="titulo">
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <mat-form-field appearance="outline" class="col-md-12">
+                <mat-label>Descrição</mat-label>
+                <input matInput type="text" formControlName="descricao">
+            </mat-form-field>
+        </div>
+        <div class="form-row hide-mob">
+            <mat-form-field appearance="outline" class="col-md-12">
+                <mat-label>Votos</mat-label>
+                <input matInput type="number" formControlName="votos">
+            </mat-form-field>
+        </div>
+        <div class="form-row hide-mob">
+            <mat-form-field appearance="outline" class="col-md-12">
+                <mat-label>Status</mat-label>
+                <input matInput type="text" formControlName="status">
+            </mat-form-field>
+        </div>
+        <div class="btn-wrap">
+            <button mat-stroked-button mat-dialog-close class="custom-button">
+                <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Fechar">
+                    close</mat-icon>
+                Cancelar
+            </button>
+            <button mat-stroked-button color="warn" mat-dialog-close (click)="removeArt()" class="custom-button">
+                <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Excluir">
+                    delete</mat-icon>
+                Excluir
+            </button>
+        </div>
+        <div class="btn-wrap">
+            <button mat-raised-button color="primary" mat-dialog-close (click)="submitArt()" class="custom-button"
+                [disabled]="this.artForm.invalid" style="margin: 1rem 0 0 0 !important;">
+                <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Submeter">
+                    create</mat-icon>
+                Concluir edições
+            </button>
+        </div>
+    </form>
+</div>

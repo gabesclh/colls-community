@@ -1,0 +1,93 @@
+<div class="submit-wrap">
+    <div matRipple class="top-wrap" *ngIf="this.user">
+        <div class="top-text">
+            <h1>Envie seu design!</h1>
+            <p>Este é o espaço para submeter seus designs para a coleção atual. Após isso, a comunidade pode votar em
+                suas artes favoritas, estas que serão escolhidas para a próxima coleção da COLLS.CO.</p>
+            <div class="button-wrap">
+                <button mat-raised-button color="primary" routerLink="/member/submit" class="custom-button">
+                    <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                        cloud_upload</mat-icon>
+                    Vamos começar!
+                </button>
+                <button mat-stroked-button routerLink="/" class="custom-button">
+                    <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                        info</mat-icon>
+                    Conheça a coleção atual
+                </button>
+            </div>
+            <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">arrow_downward
+            </mat-icon>
+        </div>
+    </div>
+</div>
+
+<div class="upload-wrap">
+    <div class="upload-zone">
+        <div class="dropzone" appDropzone (hovered)="toggleHover($event)" (dropped)="uploadFile($event)"
+            [class.hovering]="isHovering" *ngIf="!this.file">
+            <h3>Solte os arquivos para enviar</h3>
+            <input type="file" (change)="uploadFile($event.target.files)">
+        </div>
+        <div *ngIf="snapshot | async as snap">
+            <div *ngIf="showDetails && downloadURL as url">
+                <img [src]="url" class="art-image">
+            </div>
+        </div>
+        <div *ngIf="!showDetails && percentage | async as pct">
+            <mat-progress-bar mode="determinate" [value]="pct" max="100"></mat-progress-bar>
+        </div>
+    </div>
+
+    <form [formGroup]="artForm" class="upload-info" *ngIf="!submitOk" (submit)="submit()">
+        <h2>Faça o upload da sua arte!</h2>
+        <p>Mas antes, somente algumas informações antes de enviar, ok?</p>
+        <mat-divider></mat-divider>
+        <mat-form-field appearance="outline">
+            <mat-label>Coleção</mat-label>
+            <mat-select formControlName="collection">
+                <mat-option [value]="collection._id" selected>
+                    {{collection.titulo}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Título</mat-label>
+            <input matInput type="text" formControlName="title">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Descrição</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+        <div class="btn-wrap">
+            <button mat-stroked-button class="custom-button">
+                <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                    close</mat-icon>
+                Cancelar
+            </button>
+            <button mat-raised-button type="submit" color="primary" class="custom-button" [disabled]="artForm.invalid">
+                <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                    cloud_upload</mat-icon>
+                Submeter
+            </button>
+        </div>
+    </form>
+
+    <div class="upload-info" *ngIf="submitOk">
+        <h2>Tudo certo!</h2>
+        <p>Obrigado por fazer parte da comunidade de artistas independentes da COLLS.CO. Agora é só votar!</p>
+        <div class="btn-wrap">
+            <button mat-raised-button routerLink="/" color="primary" class="custom-button" [disabled]="artForm.invalid">
+                <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                    done</mat-icon>
+                Ir para a votação
+            </button>
+            <button mat-stroked-button routerLink="/member/dashboard" class="custom-button">
+                <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                    home</mat-icon>
+                Dashboard
+            </button>
+        </div>
+    </div>
+
+</div>

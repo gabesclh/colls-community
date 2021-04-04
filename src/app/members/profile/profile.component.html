@@ -1,0 +1,133 @@
+<div class="profile-wrap" *ngIf="this.user">
+    <div matRipple class="top-wrap">
+        <img class="user-photo col-md-2" src="{{user.photoURL}}">
+        <div class="top-text col-md-10">
+            <h1>E aí, {{user.displayName}}!</h1>
+            <p>{{user.email}}</p>
+            <button mat-raised-button color="primary" (click)="toggleEdit()" class="custom-button">
+                <mat-icon>
+                    edit
+                </mat-icon>
+                Editar perfil
+            </button>
+            <button mat-stroked-button (click)="this.auth.resetPassword(user.email)" class="custom-button">
+                <mat-icon>
+                    lock
+                </mat-icon>
+                Resetar senha
+            </button>
+        </div>
+    </div>
+
+    <form [formGroup]="userForm">
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Dados pessoais
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon>account_circle</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="col-md-3">
+                        <mat-label>Nome</mat-label>
+                        <input matInput type="text" formControlName="displayName">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-3">
+                        <mat-label>CPF</mat-label>
+                        <input matInput type="text" formControlName="cpf" mask="000.000.000-99">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-3">
+                        <mat-label>E-mail</mat-label>
+                        <input matInput type="email" formControlName="email">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-3">
+                        <mat-label>Celular</mat-label>
+                        <input matInput type="tel" formControlName="phoneNumber" mask="(00) 00000-0000">
+                    </mat-form-field>
+                </div>
+
+                <mat-action-row *ngIf="showForm">
+                    <button mat-raised-button color="primary" (click)="nextStep()">Próximo</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Endereço
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon>map</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="col-md-4">
+                        <mat-label>Endereço linha 1</mat-label>
+                        <input matInput type="text" formControlName="address">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-4">
+                        <mat-label>Complemento (apartamento, suíte, etc.)</mat-label>
+                        <input matInput type="text" formControlName="complement">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-4">
+                        <mat-label>Cidade</mat-label>
+                        <input matInput type="text" formControlName="city">
+                    </mat-form-field>
+                </div>
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="col-md-4">
+                        <mat-label>Estado</mat-label>
+                        <input matInput type="text" formControlName="state">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-4">
+                        <mat-label>País</mat-label>
+                        <input matInput type="text" formControlName="country">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-4">
+                        <mat-label>CEP</mat-label>
+                        <input matInput type="text" formControlName="postalCode" mask="00000-000">
+                    </mat-form-field>
+                </div>
+                <mat-action-row *ngIf="showForm">
+                    <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+                    <button mat-raised-button color="primary" (click)="nextStep()">Próximo</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Dados bancários
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon>credit_card</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="col-md-4">
+                        <mat-label>Código do banco</mat-label>
+                        <input matInput type="number" formControlName="code">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-4">
+                        <mat-label>Agência</mat-label>
+                        <input matInput type="number" formControlName="agency">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-4">
+                        <mat-label>Conta (com dígito)</mat-label>
+                        <input matInput type="number" formControlName="account">
+                    </mat-form-field>
+                </div>
+
+                <mat-action-row *ngIf="showForm">
+                    <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+                    <button mat-button mat-raised-button color="primary" (click)="submitEdit()"
+                        [disabled]="userForm.invalid">Confirmar alterações</button>
+                </mat-action-row>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </form>
+
+</div>

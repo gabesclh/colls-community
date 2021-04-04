@@ -1,0 +1,60 @@
+@import "../../../shadows.scss";
+
+.header-wrap {
+    @include smth_shadow(2);
+    position: sticky;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    top: 0;
+
+    padding: 1rem 1rem;
+
+    div {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+    img {
+        height: 28px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+button:not(:last-of-type) {
+    margin-right: .5rem;
+}
+
+.links {
+    display: none !important;
+}
+
+@media (min-width: 1000px) {
+    .header-wrap {
+    padding: 1.5rem 2rem;
+    top: 30px;
+    }
+    .vote {
+        display: none;
+    }
+    .links {
+        display: flex !important;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-self: center;
+
+        a {
+            margin: 0 30px;
+            color: #222;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+    }
+    button:not(:last-of-type) {
+        margin-right: 10px;
+    }
+}

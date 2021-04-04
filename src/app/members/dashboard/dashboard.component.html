@@ -1,0 +1,71 @@
+<div class="dashboard-wrap">
+    <div matRipple class="top-wrap" *ngIf="this.user">
+        <div class="top-text">
+            <h1>E aí, {{user.displayName}}!</h1>
+            <p>Seja bem-vindo à COLLS.CO Community! Este é seu espaço criativo para enviar seus designs e
+                gerenciar seus pagamentos.</p>
+            <div class="button-wrap">
+                <button mat-raised-button color="primary" routerLink="/member/submit" class="custom-button">
+                    <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                        cloud_upload</mat-icon>
+                    Submeta seu design!
+                </button>
+                <button mat-stroked-button routerLink="/" class="custom-button">
+                    <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                        done</mat-icon>
+                    Vote na coleção atual
+                </button>
+            </div>
+            <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">arrow_downward
+            </mat-icon>
+        </div>
+    </div>
+
+    <div class="desc-inner" *ngIf="this.artsList.length > 0">
+        <h2>Gerencie seus designs!</h2>
+        <p>A COLLS.CO é uma marca colaborativa de roupas com foco no apoio aos artistas independentes e em produzir
+            produtos de qualidade. A cada coleção, artistas brasileiros enviam suas estampas seguindo um briefing, e
+            a comunidade vota e escolhe as 8 melhores estampas. No fim, fabricamos camisetas de alta qualidade e cada
+            artista leva uma porcentagem das vendas!</p>
+    </div>
+
+    <mat-accordion class="example-headers-align" *ngIf="this.artsList.length > 0">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Meus designs
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="cards-wrap">
+                <div class="cstm-card" *ngFor="let art of artsList">
+                    <div class="img-wrap" style="background-image: url({{art.arteImg}});"></div>
+                    <div class="desc-wrap">
+                        <h2>{{art.titulo}}</h2>
+                        <p>{{art.descricao}}</p>
+                        <mat-chip-list>
+                            <mat-chip *ngIf="art.status" color="primary" selected>Em votação!</mat-chip>
+                            <mat-chip *ngIf="!art.status" color="accent" selected>Votação encerrada</mat-chip>
+                            <mat-chip>{{art.contVotos}} votos</mat-chip>
+                        </mat-chip-list>
+                        <mat-divider></mat-divider>
+                        <div class="btn-wrap">
+
+                            <button mat-raised-button color="primary" routerLink="/" class="custom-button"
+                                [disabled]="!art.status">
+                                <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                                    done</mat-icon>
+                                Votar!
+                            </button>
+                            <button mat-stroked-button class="custom-button" (click)="openDialog(art)"
+                                [disabled]="!art.status">
+                                <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Arrow right">
+                                    create</mat-icon>
+                                Editar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

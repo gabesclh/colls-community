@@ -1,0 +1,88 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+    height: 100%;
+    min-height: 100vh;
+}
+body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #fbfbfb;
+}
+
+.smth-shadow {
+    box-shadow: 0 3.2px 4.2px rgba(0, 0, 0, 0.035), 0 8.8px 11.6px rgba(0, 0, 0, 0.05),
+        0 21.1px 28px rgba(0, 0, 0, 0.065), 0 70px 93px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.wrap {
+    min-height: 100vh;
+}
+
+.whole-border-wrap {
+    display: none;
+}
+
+.custom-button {
+    padding: 0.5rem 1.5rem !important;
+    font-weight: 400 !important;
+
+    mat-icon {
+        margin: 0 0.5rem 0 0 !important;
+    }
+}
+
+p {
+    font-size: 1rem;
+    line-height: 2rem;
+}
+@media (max-width: 1000px) {
+    .custom-button {
+        padding: 0.5rem !important;
+    }
+}
+
+@media (min-width: 1000px) {
+    #top,
+    #bottom,
+    #left,
+    #right {
+        background: #efefef;
+        position: fixed;
+        z-index: 10;
+    }
+    #left,
+    #right {
+        top: 0;
+        bottom: 0;
+        width: 30px;
+    }
+    #left {
+        left: 0;
+    }
+    #right {
+        right: 0;
+    }
+
+    #top,
+    #bottom {
+        left: 0;
+        right: 0;
+        height: 30px;
+    }
+    #top {
+        top: 0;
+    }
+    #bottom {
+        bottom: 0;
+    }
+    body {
+        padding: 30px;
+    }
+}

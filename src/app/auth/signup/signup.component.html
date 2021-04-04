@@ -1,0 +1,66 @@
+<div class="signup-wrap">
+    <div class="signup-card col-md-10">
+        <div class="signup-img card-half col-md-6">
+        </div>
+        <div class="signup-form card-half col-md-6">
+            <img src="../../../assets/colls-logo.svg" alt="logo da COLLS.CO" height="50">
+            <mat-divider></mat-divider>
+            <h1>Seja bem-vindo à comunidade!</h1>
+            <p *ngIf="!showForm">Use sua conta do Google para iniciar o cadastro.</p>
+            <div class="buttons-wrap" *ngIf="!showForm">
+                <button class="big-btn" mat-stroked-button (click)="signUpViaGoogle()">
+                    <img src="../../../assets/google-icon.webp" alt="Logo da Google" height="30">
+                    Cadastrar com Google</button>
+            </div>
+            <form [formGroup]="signUpForm" (ngSubmit)="completeSignUp()" *ngIf="showForm">
+                <p *ngIf="showForm">Complete as informações para finalizar seu cadastro.</p>
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="col-md-6">
+                        <mat-label>Nome</mat-label>
+                        <input matInput type="text" formControlName="nome">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-6">
+                        <mat-label>CPF</mat-label>
+                        <input matInput type="text" formControlName="cpf" mask="000.000.000-99">
+                    </mat-form-field>
+                </div>
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="col-md-6">
+                        <mat-label>Celular</mat-label>
+                        <input matInput type="tel" formControlName="telefone" mask="(00) 00000-0000">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-6">
+                        <mat-label>Tipo de conta</mat-label>
+                        <mat-select formControlName="perfil">
+                            <mat-option value="false" selected>
+                                Membro
+                            </mat-option>
+                            <mat-option value="true">
+                                Membro Designer
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="form-row">
+                    <mat-form-field appearance="outline" class="col-md-6">
+                        <mat-label>E-mail</mat-label>
+                        <input matInput type="email" formControlName="email">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="col-md-6">
+                        <mat-label>Senha</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="senha">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Esconder senha'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+                <button class="big-btn" mat-raised-button color="primary" type="submit"
+                    [disabled]="signUpForm.invalid">Finalizar cadastro</button>
+            </form>
+            <div class="buttons-wrap">
+                <a routerLink="/login">Já tem conta? Faça login!</a>
+            </div>
+        </div>
+    </div>
+</div>

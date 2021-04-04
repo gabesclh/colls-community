@@ -1,0 +1,66 @@
+.top-wrap {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 4rem;
+
+    .user-photo {
+        border-radius: 100%;
+        height: auto;
+    }
+
+    h1 {
+        font-size: 3rem;
+        line-height: 3.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        margin-bottom: 1.5rem;
+    }
+
+    button:last-of-type {
+        border-color: white;
+    }
+    button {
+        margin-right: 1rem;
+    }
+}
+
+form {
+    margin: 2rem 0;
+}
+
+.custom-button {
+    // border-color: white;
+    margin-bottom: 1rem;
+}
+
+.mat-expansion-panel-header-description {
+    justify-content: flex-end;
+    margin-right: 0;
+}
+
+@media (max-width: 1000px) {
+    .top-wrap {
+        padding: 1rem;
+
+        .user-photo {
+            margin: 2rem;
+            border-radius: 100%;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 2.5rem;
+        }
+
+        .custom-button {
+            width: 100%;
+        }
+    }
+}
